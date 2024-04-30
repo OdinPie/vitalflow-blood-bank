@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>VitalFlow🩸</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='style/style.css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'>
     <script src='js/main.js'></script>
 </head>
 <body>
@@ -18,8 +20,8 @@
         <h1 class="text-4xl font-bold text-white">VitalFlow</h1>
         <p class='text-white'>Connecting donors with rare blood groups to those in need, ensuring life-saving transfusions with ease.</p>
         <form action="">
-            <div class="group-select my-5">
-            <select class="select max-w-xs" name="group" id="">
+            <div class="group-select flex bg-[#fae7f4] rounded-3xl my-5">
+            <select class="select max-w-xs rounded-none" name="group" id="">
                 <option disabled selected value="">Blood Group</option>
                 <option value="">AB-</option>
                 <option value="">B-</option>
@@ -97,17 +99,27 @@
                 <option value="Sunamganj">Sunamganj</option>
                 <option value="Sylhet">Sylhet</option>
             </select>
-            <input type="date" name="date" id="">
+            <input placeholder="&nbsp Enter Date" type="text" id="my_date_picker">
+            <button class="flex-1 rounded-full">Search</button>
             </div>
         </form>
     </div>
     </div>
+
+
+    <!-- SCRIPT OF JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script>
         $(function(){
         $("#nav-placeholder").load("shared/nav.html");
         });
-</script>
-
-
+       $(document).ready(function () {
+        $(function () {
+            $("#my_date_picker").
+            datepicker();
+        });
+        }) 
+    </script>
 </body>
 </html>
