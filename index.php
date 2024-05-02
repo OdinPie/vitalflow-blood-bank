@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="light">
+<html data-theme="valentine">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -12,12 +12,13 @@
     <script src='js/main.js'></script>
 </head>
 <body>
-    <div id="nav-placeholder">
-    </div>
+    <header>
+    <?php include("shared/nav.html") ?>
+    </header>
     <div class="banner bg-[#eb3738] relative">
     <img class="opacity-20" src="assets/hands.png" alt="">
     <div class="content text-center absolute top-1/4 -translate-y-10 left-1/2 -translate-x-1/2">
-        <h1 class="text-4xl font-bold text-white">VitalFlow</h1>
+        <h1 class="text-4xl font-bold text-white">VitalFlow</h1><br>
         <p class='text-white'>Connecting donors with rare blood groups to those in need, ensuring life-saving transfusions with ease.</p>
         <form action="">
             <div class="group-select flex bg-[#fae7f4] rounded-3xl my-5">
@@ -99,27 +100,15 @@
                 <option value="Sunamganj">Sunamganj</option>
                 <option value="Sylhet">Sylhet</option>
             </select>
-            <input placeholder="&nbsp Enter Date" type="text" id="my_date_picker">
+            <input class="bg-[#fae7f4]" placeholder="&nbsp Enter Date" type="date" id="date">
             <button class="flex-1 rounded-full">Search</button>
             </div>
-        </form>
+        </form><br>
+        <div class="btn-container">
+            <button class="btn btn-outline">Be a Donor</button>
+            <button class="btn">Find a Donor</button>
+        </div>
     </div>
     </div>
-
-
-    <!-- SCRIPT OF JQUERY -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script>
-        $(function(){
-        $("#nav-placeholder").load("shared/nav.html");
-        });
-       $(document).ready(function () {
-        $(function () {
-            $("#my_date_picker").
-            datepicker();
-        });
-        }) 
-    </script>
 </body>
 </html>
