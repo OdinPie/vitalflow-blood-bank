@@ -4,3 +4,8 @@
     padding: 100px;
     background: red;
 }
+.playfair-display-font{
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
