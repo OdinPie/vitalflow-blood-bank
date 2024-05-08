@@ -10,7 +10,11 @@
 </head>
 <body>
 <div class="flex justify-center items-center">
-    <div class="flex justify-between items-center bg-slate-100 shadow-2xl rounded-2xl p-[5%]">
+    <div class="flex justify-between items-center bg-slate-100 shadow-2xl rounded-2xl p-[5%] relative">
+        <div hidden id="alert" class="absolute top-1/2 left-1/2 text-center -translate-x-1/2 -translate-y-1/2 bg-white border-8 border-red-300  p-10 rounded-lg">
+            <h1 class="text-xl">Registration Successful!!</h1>
+            <p>Navigating to Login Page ...</p>
+        </div>
             <div class="form">
             <h1 class="text-2xl">Registration</h1><br>
             <form class="form-1" action="">

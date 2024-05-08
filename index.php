@@ -16,6 +16,10 @@ switch( $request ) {
         require __DIR__ . $VIEWSDIR . 'authentication/login.php';
         break;
     
+    case '/blood-bank-project/logout':
+        require __DIR__ . $VIEWSDIR . 'authentication/logout.php';
+        break;
+    
     case '/blood-bank-project/register':
         require __DIR__ . $VIEWSDIR . 'authentication/register.php';
     break;

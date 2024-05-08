@@ -1,3 +1,6 @@
+<?php 
+    require_once("views/authentication/config.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +34,23 @@
           </ul>
         </div>
         <div class="navbar-end">
-          <a href="login" class="btn bg-[#ef5f60] hover:bg-[#a72728] border-none">Login</a>
+        
+          <?php if(!empty($_SESSION['email'])){
+            $email = $_SESSION['email']; 
+            // echo $email;
+            $result = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
+            $row = mysqli_fetch_assoc($result); 
+            $img = $row['url']; 
+            echo '
+            <a href="#" class="btn btn-circle  mx-2 "><div class="avatar">
+            <div class="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src= "'.$img .'"  alt="profile-img"/>
+            </div>
+          </div></a>
+            <a href="logout" class="btn bg-[#ef5f60] mx-1 hover:bg-[#a72728] border-none">Logout</a>'
+          ;}else{
+            echo '<a href="login" class="btn bg-[#ef5f60] hover:bg-[#a72728] border-none">Login</a>';
+          } ;?>
         </div>
       </div>
 </body>

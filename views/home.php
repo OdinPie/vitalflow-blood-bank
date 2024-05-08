@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-    <?php include_once("shared/nav.html") ?>
+    <?php include_once("shared/nav.php") ?>
     </header>
     <div class="banner bg-[#eb3738] relative">
     <img class="opacity-20" src="assets/hands.png" alt="">

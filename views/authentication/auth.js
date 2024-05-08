@@ -11,6 +11,7 @@ function showNext(next,event){
     }else{
         form2.setAttribute('hidden', true);
         form3.removeAttribute('hidden');
+        
     }
 }
 function showBack(next,event){
@@ -26,6 +27,10 @@ function showBack(next,event){
 }
 const today = new Date().toISOString().split('T')[0];
 donation_date.setAttribute('max',today);
+
+function navigateLogin(){
+    location.href ='login';
+}
 
 function process(event){
     event.preventDefault();
@@ -50,9 +55,12 @@ function process(event){
             if(!res.ok){
                 throw new Error('Network was not ok');
             }
-            return res.text()})
+            return res.text()
+        })
             .then(data=>{
                 console.log(data);
+                    document.querySelector('.absolute').removeAttribute('hidden');
+                    setTimeout(navigateLogin, 4000);
             })
             .catch(error => {
                 // Handle error
