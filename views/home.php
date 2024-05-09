@@ -99,7 +99,7 @@
                 <option value="Sunamganj">Sunamganj</option>
                 <option value="Sylhet">Sylhet</option>
             </select>
-            <input class="bg-[#fae7f4]" placeholder="&nbsp Enter Date" type="date" id="date">
+            <input class="bg-[#fae7f4]" type="date" id="date">
             <button class="btn bg-[#fae7f4] flex-1 rounded-full">Search</button>
             </div>
         </form><br>
