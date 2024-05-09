@@ -32,55 +32,5 @@ function navigateLogin(){
     location.href ='login';
 }
 
-function process(event){
-    event.preventDefault();
-    const formdata = new FormData();
-        formdata.append("username", document.getElementById('username').value)
-        formdata.append("number", document.getElementById('number').value)
-        formdata.append("email", document.getElementById('email').value)
-        formdata.append("password", document.getElementById('password').value)
-        formdata.append("bgroup", document.getElementById('bgroup').value)
-        formdata.append("address", document.getElementById('address').value)
-        formdata.append("district", document.getElementById('district').value)
-        formdata.append("url", document.getElementById('url').value)
-        formdata.append("nid", document.getElementById('nid').value)
-        formdata.append("dob", document.getElementById('dob').value)
-        formdata.append("gender", document.querySelector('input[name="gender"]:checked').value)
-        formdata.append("ddate", document.getElementById('donation_date').value)
-
-        fetch('views/authentication/process.php', {
-            method: 'POST',
-            body: formdata
-        }).then(res =>{
-            if(!res.ok){
-                throw new Error('Network was not ok');
-            }
-            return res.text()
-        })
-            .then(data=>{
-                console.log(data);
-                    document.querySelector('.absolute').removeAttribute('hidden');
-                    setTimeout(navigateLogin, 4000);
-            })
-            .catch(error => {
-                // Handle error
-                console.error('There was a problem with your fetch operation:', error);
-            });
-        }
-        // console.log(
-        //     "username: "+username,
-        //     "number: "+number,
-        //     "email: "+email,
-        //     "password: "+password,
-        //     "group: "+group,
-        //     "adress: "+adress,
-        //     "district: "+district,
-        //     "url: "+url,
-        //     "nid: "+nid,
-        //     "dob: "+dob,
-        //     "gender: "+gender,
-        //     "ddate: "+ddate
-        // );
-
 
 
