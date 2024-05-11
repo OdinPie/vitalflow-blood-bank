@@ -2,9 +2,8 @@
 
 $request = $_SERVER['REQUEST_URI'];
 $VIEWSDIR = '/views/';
-// echo "<pre>";
-// var_dump ($_SERVER);
-// echo "</pre>";
+$email = isset($_GET['email']) ? $_GET['email'] :'';
+
 switch( $request ) {
     case '/blood-bank-project':
     case '/blood-bank-project/':
@@ -23,7 +22,13 @@ switch( $request ) {
     case '/blood-bank-project/register':
         require __DIR__ . $VIEWSDIR . 'authentication/register.php';
     break;
-    
+
+    case '/blood-bank-project/blood-request':
+        require __DIR__ . $VIEWSDIR . 'profile\bloodRequest\bloodRequestForm.php';
+        break;
+    case '/blood-bank-project/profile?email='.$email:
+        require __DIR__ . $VIEWSDIR . 'profile\dashboard\dashboard.php';
+        break;
     default:
             http_response_code(404);
             require __DIR__  . '/error.php';

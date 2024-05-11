@@ -18,14 +18,14 @@
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal z-50 px-1">
-            <li><a>Home</a></li>
+            <li><a href="home">Home</a></li>
             <li>
               <details>
                 <summary>Donation</summary>
                 <ul class="p-2">
                   <li><a>Donate Blood</a></li>
                   <li><a>Receive Blood</a></li>
-                  <li><a>Post Blood Request</a></li>
+                  <li><a href="blood-request">Post Blood Request</a></li>
                 </ul>
               </details>
             </li>
