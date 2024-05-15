@@ -35,6 +35,7 @@ function navigateLogin(){
 function process(event){
     event.preventDefault();
     const formdata = new FormData();
+    // console.log("validator_name: ",document.getElementById('validator_name').value, "validator_designation: ",document.getElementById('validator_designation').value);
         formdata.append("username", document.getElementById('username').value)
         formdata.append("number", document.getElementById('number').value)
         formdata.append("email", document.getElementById('email').value)
@@ -47,6 +48,8 @@ function process(event){
         formdata.append("dob", document.getElementById('dob').value)
         formdata.append("gender", document.querySelector('input[name="gender"]:checked').value)
         formdata.append("ddate", document.getElementById('donation_date').value)
+        formdata.append("validator_name", document.getElementById('validator_name').value)
+        formdata.append("validator_designation", document.getElementById('validator_designation').value)
 
         fetch('views/authentication/process.php', {
             method: 'POST',

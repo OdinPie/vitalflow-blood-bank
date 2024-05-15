@@ -29,7 +29,7 @@
                 </ul>
               </details>
             </li>
-            <li><a>Educational</a></li>
+            <li><a href="educational">Educational</a></li>
             <li><a>Blood Drives</a></li>
           </ul>
         </div>

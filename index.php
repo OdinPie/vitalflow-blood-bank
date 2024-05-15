@@ -3,6 +3,7 @@
 $request = $_SERVER['REQUEST_URI'];
 $VIEWSDIR = '/views/';
 $email = isset($_GET['email']) ? $_GET['email'] :'';
+$content_id = isset($_GET['content_id']) ? $_GET['content_id'] :'';
 
 switch( $request ) {
     case '/blood-bank-project':
@@ -28,6 +29,12 @@ switch( $request ) {
         break;
     case '/blood-bank-project/profile?email='.$email:
         require __DIR__ . $VIEWSDIR . 'profile\dashboard\dashboard.php';
+        break;
+    case '/blood-bank-project/educational':
+        require __DIR__ . $VIEWSDIR . 'educational\educational.php';
+        break;
+    case '/blood-bank-project/educational?content_id='.$content_id:
+        require __DIR__ . $VIEWSDIR . 'educational\content.php';
         break;
     default:
             http_response_code(404);

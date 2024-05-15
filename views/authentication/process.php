@@ -14,15 +14,17 @@
      $dob = $_POST['dob'];
      $ddate = $_POST['ddate'];
      $gender = $_POST['gender'];
-
+     $validator_name = $_POST['validator_name'];
+     $validator_designation = $_POST['validator_designation'];
+     
      $conn = mysqli_connect('localhost:3307', 'root', '', 'bloodbank');
      if ($conn->connect_error) {
         die('Connection Failed' .$conn->connect_error);
      }else{
         $statement = $conn->prepare("INSERT INTO users (username, number, password, email,
-        bgroup, nid, dob, gender, address, district, ddate, url) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) ;");
-     }  $statement->bind_param("sisssissssss",$username, $number, $password, $email,$bgroup, $nid
-                            ,$dob,$gender,$address,$district,$ddate, $url );
+        bgroup, nid, dob, gender, address, district, ddate, url, validator_name,validator_designation ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?) ;");
+     }  $statement->bind_param("sisssissssssss",$username, $number, $password, $email,$bgroup, $nid
+                            ,$dob,$gender,$address,$district,$ddate, $url , $validator_name, $validator_designation);
         $statement->execute();
         echo "data saved successfully";
         $statement->close();

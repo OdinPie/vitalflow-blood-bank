@@ -45,14 +45,14 @@
                 <label class="flex gap-2">
                 <select class="select w-full" name="group" id="bgroup" required>
                 <option disabled selected value="">Blood Group</option>
-                <option value="">AB-</option>
-                <option value="">B-</option>
-                <option value="">AB+</option>
-                <option value="">A+</option>
-                <option value="">O-</option>
-                <option value="">B-</option>
-                <option value="">A-</option>
-                <option value="">O+</option>
+                <option value="AB-">AB-</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="A+">A+</option>
+                <option value="O-">O-</option>
+                <option value="B-">B-</option>
+                <option value="A-">A-</option>
+                <option value="O+">O+</option>
             </select>
                 </label><br>
                 <label class="input input-bordered flex items-center gap-2">
@@ -152,6 +152,12 @@
                 </label><br>
                 <label class="input input-bordered flex items-center gap-2">
                 <input type="text" class="grow" id="url" placeholder="Image URL" required />
+                </label><br>
+                <label class="input input-bordered flex items-center gap-2">
+                <input type="text" id="validator_name" class="grow" placeholder="Validator Name" required />
+                </label><br>
+                <label class="input input-bordered flex items-center gap-2">
+                <input type="text" id="validator_designation" class="grow" placeholder="Validator Designation" required />
                 </label><br>
                 <div class="form-3-btns flex justify-evenly">
                 <button class="btn bg-slate-200 text-black" onclick="showBack(2,event)">Back</button>
