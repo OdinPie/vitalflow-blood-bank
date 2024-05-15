@@ -3,7 +3,7 @@ $query_email = isset($_GET['email']) ? $_GET['email'] :'';
 // echo "".$query_email."";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme="valentine" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,18 +14,17 @@ $query_email = isset($_GET['email']) ? $_GET['email'] :'';
 </head>
 <body>
     <?php require("shared/nav.php"); ?>
-<div class="drawer lg:drawer-open">
+<div class="drawer lg:drawer-open relative bg-white">
   <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content flex flex-col items-center justify-center">
+  <div class="drawer-content">
     <!-- Page content here -->
-    <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-  
+    <?php require("views/profile/dashboard/profile.php") ?>
   </div> 
-  <div class="drawer-side">
+  <div class="drawer-side fixed">
     <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label> 
     <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       <!-- Sidebar content here -->
-      <li><a onclick="changeBG(1)" id="1"> <i class="fa-solid fa-user"></i>Dashboard</a></li><br>
+      <li><a onclick="changeBG(1)" id="1" class="text-red-600"> <i class="fa-solid fa-user"></i>Dashboard</a></li><br>
       <li><a onclick="changeBG(2)" id="2"><i class="fa-solid fa-droplet"></i>Request Blood</a></li><br>
       <li><a onclick="changeBG(3)" id="3"><i class="fa-solid fa-message"></i>Messages</a></li><br>
       <li><a onclick="changeBG(4)" id="4"><i class="fa-solid fa-circle-info"></i>Update Information</a></li>

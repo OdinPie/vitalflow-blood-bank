@@ -12,7 +12,7 @@
     <script src='js/main.js'></script>
 </head>
 <body class="h-10">
-    <div class="navbar">
+    <div class="navbar bg-[#fae7f4]">
         <div class="navbar-start">
           <a class="btn btn-ghost text-xl">VitalFlow</a>
         </div>
