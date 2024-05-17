@@ -2,7 +2,7 @@
 
 $request = $_SERVER['REQUEST_URI'];
 $VIEWSDIR = '/views/';
-$email = isset($_GET['email']) ? $_GET['email'] :'';
+$id = isset($_GET['id']) ? $_GET['id'] :'';
 $content_id = isset($_GET['content_id']) ? $_GET['content_id'] :'';
 
 switch( $request ) {
@@ -27,7 +27,7 @@ switch( $request ) {
     case '/blood-bank-project/blood-request':
         require __DIR__ . $VIEWSDIR . 'profile\bloodRequest\bloodRequestForm.php';
         break;
-    case '/blood-bank-project/profile?email='.$email:
+    case '/blood-bank-project/profile?id='.$id:
         require __DIR__ . $VIEWSDIR . 'profile\dashboard\dashboard.php';
         break;
     case '/blood-bank-project/educational':
@@ -35,6 +35,12 @@ switch( $request ) {
         break;
     case '/blood-bank-project/educational?content_id='.$content_id:
         require __DIR__ . $VIEWSDIR . 'educational\content.php';
+        break;
+    case '/blood-bank-project/donors':
+        require __DIR__ . $VIEWSDIR . 'donors\donors.php';
+        break;
+    case '/blood-bank-project/blood-request-posts':
+        require __DIR__ . $VIEWSDIR . 'postBlood\postBlood.php';
         break;
     default:
             http_response_code(404);

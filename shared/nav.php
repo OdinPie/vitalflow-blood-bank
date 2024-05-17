@@ -23,26 +23,27 @@
               <details>
                 <summary>Donation</summary>
                 <ul class="p-2">
-                  <li><a>Donate Blood</a></li>
-                  <li><a>Receive Blood</a></li>
+                  <li href="blood-request-posts"><a>Donate Blood</a></li>
+                  <li><a href="donors">Search Blood</a></li>
                   <li><a href="blood-request">Post Blood Request</a></li>
                 </ul>
               </details>
             </li>
             <li><a href="educational">Educational</a></li>
-            <li><a>Blood Drives</a></li>
+            <!-- <li><a>Blood Drives</a></li> -->
           </ul>
         </div>
         <div class="navbar-end">
         
           <?php if(!empty($_SESSION['email'])){
             $email = $_SESSION['email']; 
-            // echo $email;
+            $id = $_SESSION['id']; 
+            // echo $id;
             $result = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
             $row = mysqli_fetch_assoc($result); 
             $img = $row['url']; 
             echo '
-            <a href="#" class="btn btn-circle  mx-2 "><div class="avatar">
+            <a href="profile?id='.$id.'" class="btn btn-circle  mx-2 "><div class="avatar">
             <div class="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src= "'.$img .'"  alt="profile-img"/>
             </div>

@@ -12,6 +12,7 @@
             if($password == $row["password"]){
                 $_SESSION['login'] = true;
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['id'] = $row['user_id'];
 
                 echo "<script> location.href = 'home';</script>";
             }else{

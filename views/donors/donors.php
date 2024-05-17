@@ -1,3 +1,7 @@
+<?php 
+require_once("views/authentication/config.php");
+$result = mysqli_query($conn,"SELECT * FROM users");
+?>
 <!DOCTYPE html>
 <html data-theme="light" lang="en">
 <head>
@@ -5,39 +9,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Blood Request Form</title>
+    <title>Find Donors</title>
 </head>
 <body>
-<?php require_once("shared/nav.php"); ?>
-    <div class="container flex justify-center items-center">
-        <div class="form-container rounded-xl bg-slate-200 p-10">
-            <form action="">
-                <h1 class="text-2xl font-bold text-black">Request for Blood</h1><br>
-                <div class="flex gap-10 my-2">
-                <select class="select select-bordered w-[300px] bg-white">
-                <option disabled selected>Blood Group</option>
+    <?php require_once('shared/nav.php') ?>
+    <div class="px-10">
+    <div class="flex justify-between items-center p-5">
+        <p class="font-semibold">Results(03)</p>
+        <div class="flex gap-2">
+        <p class="text-sm">SORT BY</p>
+        <select class="border" name="sort" id="">
+            <option value="Newest">Newest</option>
+            <option value="Oldest">Oldest</option>
+        </select>
+        </div>
+    </div>
+    <hr>
+    <div class="flex gap-10 my-10">
+            <div class="card card-compact w-72 bg-transparent shadow-xl">
+            <div class="card-body">
+            <h2 class="card-title text-center">Advanced Search</h2>
+            <hr>
+            <div class="p-1">
+            <label class="form-control w-full max-w-xs">
+            <div class="label">
+                <span class="label-text">Blood Group</span>
+            </div>
+            <select class="select select-bordered w-full max-w-xs">
                 <option value="AB-">AB-</option>
                 <option value="B-">B-</option>
                 <option value="AB+">AB+</option>
                 <option value="A+">A+</option>
                 <option value="O-">O-</option>
+                <option value="B-">B-</option>
                 <option value="A-">A-</option>
                 <option value="O+">O+</option>
-                </select> 
-                <input class="w-[300px] p-3 rounded-lg bg-white" placeholder="Requirement Date" type="text" onfocus="this.type='date'" onblur="this.type='text' " name="requiredDate" id="">               
-                </div>
-                <div class="flex gap-10 my-2">
-                <select class="select select-bordered w-[300px] bg-white" name="division">
-                    <option value="" disabled selected>Select Division</option>
-                    <option value="Dhaka">Dhaka</option>
-                    <option value="Chattogram">Chattogram</option>
-                    <option value="Barisal">Barisal</option>
-                    <option value="Khulna">Khulna</option>
-                    <option value="Rajshahi">Rajshahi</option>
-                    <option value="Rangpur">Rangpur</option>
-                    <option value="Sylhet">Sylhet</option>
-                </select>
-                <select class="select select-bordered w-[300px] bg-white" name="district" id="">
+            </select>
+            </label>
+            </div>
+            <div class="p-1">
+            <label class="form-control w-full max-w-xs">
+            <div class="label">
+                <span class="label-text">District</span>
+            </div>
+            <select class="select select-bordered max-w-xs" name="district" id="">
                 <option disabled selected value="">Select District</option>
                 <option value="Barishal">Barishal</option>
                 <option value="Barguna">Barguna</option>
@@ -104,17 +119,40 @@
                 <option value="Sunamganj">Sunamganj</option>
                 <option value="Sylhet">Sylhet</option>
             </select>
-                </div>
-            <div class="flex gap-10 my-2">
-            <input type="number" placeholder="Number of Bags" name="no_of_bags" class="input input-bordered bg-white w-[300px]" />
-            <input type="text" placeholder="Name of Hospital" name="name_of_hospital" class="input input-bordered bg-white w-[300px]" />
-
+            </label>
             </div>
-            <textarea name="message" class="w-full rounded-xl bg-white p-3 my-2" placeholder="Write additional details here..." id=""></textarea>
-            <br>
-            <button class="btn btn-error w-full">Request Blood</button>
-            </form>
+            <div class="card-actions justify-end">
+            <button class="btn w-full rounded-none bg-pink-300">Search</button>
+            </div>
         </div>
+        </div>
+        <div class="grid grid-cols-3 gap-5">
+        <?php while($row = mysqli_fetch_assoc($result)) { ?>
+            
+            <div class="card card-compact w-60 bg-base-100 shadow-xl">
+            <div class="avatar flex justify-center">
+                <div class="w-24 rounded-full">
+                    <img src="<?php echo $row["url"] ?>" />
+                </div>
+                </div>            
+                <div class="card-body">
+                <h2 class="card-title text-center"><?php echo $row["username"] ?></h2>
+                <div class="flex justify-between text-xs">
+                <p>Group: <?php echo $row["bgroup"] ?></p>
+                <p>District: <?php echo $row["district"] ?></p>
+                </div>
+                <p>Number: 01********</p>
+                <div class="card-actions flex justify-end">
+                <a href="profile?id=<?php echo $row["user_id"];?>"><button class="btn btn-outline-red rounded-none flex-1">See Details</button></a>
+                </div>
+            </div>
+            </div>
+
+        <?php }?>
     </div>
+    </div>
+    
+    </div>
+    
 </body>
 </html>

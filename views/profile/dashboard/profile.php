@@ -1,27 +1,47 @@
+<?php
+    $current_user_id = isset($_SESSION["id"]) ? $_SESSION["id"] : 0;
+    $id = isset($_GET["id"]) ? $_GET["id"] : -1;
+    $conn = mysqli_connect("localhost:3307", "root", "", "bloodbank");
+    $result = mysqli_query($conn,"SELECT * FROM users where user_id='$id'");
+    $row = mysqli_fetch_assoc($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile</title>
 </head>
 <body>
     <div class="h-16 bg-slate-100"></div>
     <div class="flex items-center gap-10 mb-10 pb-10 bg-slate-100">
     <div class="avatar pl-10 -mt-10">
     <div class="w-36 rounded-full">
-    <img src="https://www.coindesk.com/resizer/jpvG1ItqAqwEYBDDeulBydwQ6os=/1200x628/center/middle/cloudfront-us-east-1.images.arcpublishing.com/coindesk/HSEIMSNPGBDITNES2RXWY4TK4Q.jpg" alt="">
+    <img src="<?php echo $row["url"]?>" alt="">
     </div>
     </div>
     <div>
         <div class="flex items-center gap-3 mb-4">
-        <h1 class="text-2xl">Mr Doge</h1>
+        <h1 class="text-2xl"><?php echo $row["username"]?></h1>
+        <?php 
+        $today = date("Y-m-d");
+        $ddate = $row["ddate"];
+        $diff = date_diff(date_create($today), date_create($ddate))->format("%a") ;
+        if($diff < 56){ ?>
+        <div class="badge badge-neutral">Not Eligible</div>
+        <?php } else { ?>
         <div class="badge badge-neutral">Eligible</div>
+   <?php } 
+        if($id != $current_user_id){ ?>
+        <button class="btn rounded-none">Send Message</button>
+        <?php } ?>
         </div>
         <div class="outline outline-slate-50 outline-offset-8 w-3/4 mb-2">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores provident, fugit iste, ipsa laudantium adipisci accusantium ex excepturi, eveniet deserunt voluptatum aut sequi quis! Quos voluptatibus quam officiis enim aliquam!</p>
+            <p>Working as a software engineer. Non smoker. No history of blood borne diseases</p>
         </div>
-        <p class="text-red-600 p-1 text-sm">*Send message to donor to reveal contact information</p>
+        <?php if($id != $current_user_id){ ?>
+            <p class="text-red-600 p-1 text-sm">*Send message to donor to reveal contact information</p>
+        <?php } ?>
     </div>
     </div>
     <div class="my-5">
@@ -34,7 +54,7 @@
         <div class="label">
             <span class="label-text">Name</span>
         </div>
-            <h1 class="text-lg border p-2">Donor Name</h1>
+            <h1 class="text-lg border p-2"><?php echo $row["username"]?></h1>
         </label>
         </div>
         <div class="p-1 mr-10">
@@ -50,7 +70,7 @@
         <div class="label">
             <span class="label-text">Phone Number</span>
         </div>
-            <h1 class="text-xl border p-2">01XX....</h1>
+            <h1 class="text-xl border p-2">01********.</h1>
         </label>
         </div>
         <div class="p-1 mr-10">
@@ -58,12 +78,12 @@
         <div class="label">
             <span class="label-text">Blood Group</span>
         </div>
-            <h1 class="text-xl border p-2">B+</h1>
+            <h1 class="text-xl border p-2"><?php echo $row["bgroup"]?></h1>
         </label>
         </div>
         </div>
         </div>
-        <hr>
+        <hr class="my-5">
         <div class="flex px-10">
         <h1 class="font-semibold text-lg w-1/4 pt-2">Donor Location</h1>
         <!-- <p class="text-red">*Send message to donor to reveal</p> -->
@@ -73,7 +93,7 @@
         <div class="label">
             <span class="label-text">District</span>
         </div>
-            <h1 class="text-lg border p-2">District Name</h1>
+            <h1 class="text-lg border p-2"><?php echo $row["district"]?></h1>
         </label>
         </div>
         <div class="p-1 mr-10">
@@ -81,7 +101,7 @@
         <div class="label">
             <span class="label-text">Address</span>
         </div>
-            <h1 class="text-lg border p-2 w-52">Address Details</h1>
+            <h1 class="text-lg border p-2 w-52"><?php echo $row["address"]?>s</h1>
         </label>
         </div>
         </div>

@@ -1,4 +1,4 @@
-function changeBG(id){
+function changeBG(id, page){
     document.getElementById(1).style.color = '#632c3b';
     document.getElementById(2).style.color = '#632c3b';
     document.getElementById(3).style.color = '#632c3b';
