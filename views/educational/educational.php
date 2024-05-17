@@ -1,7 +1,5 @@
 <?php
-    $conn = mysqli_connect("localhost:3307", "root", "", "bloodbank");
-    $result = mysqli_query($conn,"SELECT * FROM educationals");
-    // var_dump($result) ;
+    require_once("views/authentication/config.php");
 ?>
 <!DOCTYPE html>
 <html data-theme="valentine" lang="en">
@@ -17,6 +15,7 @@
     <div class="max-w-5xl mx-auto mt-10">
     <div class="grid grid-cols-3 ">
     <?php 
+    $result = mysqli_query($conn,"SELECT * FROM educationals");
     while( $row = mysqli_fetch_array($result)) { ?>
     <div class="card card-compact w-72 bg-base-100 shadow-xl">
     <figure><img class="w-full h-60" src="<?php echo $row["content"]; ?>" alt="blood-resource" /></figure>

@@ -1,6 +1,5 @@
 <?php 
 require_once("views/authentication/config.php");
-$result = mysqli_query($conn,"SELECT * FROM users");
 ?>
 <!DOCTYPE html>
 <html data-theme="light" lang="en">
@@ -127,7 +126,9 @@ $result = mysqli_query($conn,"SELECT * FROM users");
         </div>
         </div>
         <div class="grid grid-cols-3 gap-5">
-        <?php while($row = mysqli_fetch_assoc($result)) { ?>
+        <?php 
+        $result = mysqli_query($conn,"SELECT * FROM users");
+        while($row= mysqli_fetch_assoc($result)) {?>
             
             <div class="card card-compact w-60 bg-base-100 shadow-xl">
             <div class="avatar flex justify-center">
