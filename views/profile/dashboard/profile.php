@@ -33,12 +33,13 @@
         <?php } else { ?>
         <div class="badge badge-neutral">Eligible</div>
    <?php } 
+    if($row['status']){?>
+        <i class="fa-solid fa-circle-check"></i>
+        <?php } 
         if($id != $current_user_id){ ?>
         <button class="btn rounded-none">Send Message</button>
-        <?php } 
-        if($row['status']){?>
-        <i class="fa-solid fa-circle-check"></i>
         <?php } ?>
+        
         </div>
         <div class="outline outline-slate-50 outline-offset-8 w-3/4 mb-2">
             <p>Working as a software engineer. Non smoker. No history of blood borne diseases</p>

@@ -127,7 +127,7 @@ require_once("views/authentication/config.php");
         </div>
         <div class="grid grid-cols-3 gap-5">
         <?php 
-        $result = mysqli_query($conn,"SELECT * FROM users");
+        $result = mysqli_query($conn,"SELECT * FROM users WHERE NOT username='ADMIN'");
         while($row= mysqli_fetch_assoc($result)) {?>
             
             <div class="card card-compact w-60 bg-base-100 shadow-xl">
