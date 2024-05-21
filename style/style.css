@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+.chatRows{
+  margin: 5px;
+  padding: 20px;
+  border: 1px solid white;
+}
+
+.chatRows:hover{
+  background-color: rgb(233, 226, 226);
+}
+
 h1,p{
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -22,15 +32,24 @@ h1,p{
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
   }
-
+.chat-box{
+  padding: 20px;
+}
 .sender{
+  display: flex;
   padding: 5px;
-  border-radius: 5px 5px 0px 5px;
+  border-radius: 18px 18px 0px 18px;
   background-color: palevioletred;
+  align-items: flex-end;
+  max-width:calc(100% - 600px);
+  margin-left: auto;
 }
 
 .receiver{
+  display: flex;
   padding: 5px;
-  border-radius: 5px 5px 5px 0px;
+  border-radius: 18px 18px 18px 0px;
   background-color: pink;
+  max-width:calc(100% - 600px);
 }
+

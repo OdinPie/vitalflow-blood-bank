@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-        <div class="flex flex-col">
+        <div class="flex flex-col p-5">
         <div class="flex items-center gap-5">
         <a href="profile?id=<?php echo $row["user_id"];?>">
         <div class="avatar">
@@ -21,10 +21,10 @@
         <h1 class="text-2xl font-semibold">Username Username</h1>
         </div>
         <hr>
-        <div class="chat-section">
+        <div class="chat-box">
             <div class="receiver">
                 <p>Hello dude how are you?</p>
-            </div>
+            </div><br>
             <div class="sender">
                 <p>Hello gib blud</p>
             </div>

@@ -4,7 +4,7 @@ $request = $_SERVER['REQUEST_URI'];
 $VIEWSDIR = '/views/';
 $id = isset($_GET['id']) ? $_GET['id'] :'';
 $content_id = isset($_GET['content_id']) ? $_GET['content_id'] :'';
-
+$messenger_id= isset($_GET['messenger_id']) ? $_GET['messenger_id'] :'';
 switch( $request ) {
     case '/blood-bank-project':
     case '/blood-bank-project/':
@@ -47,6 +47,12 @@ switch( $request ) {
         break;
     case '/blood-bank-project/alldonors':
         require __DIR__ . $VIEWSDIR . 'admin\alldonors\alldonors.php';
+        break;
+    case '/blood-bank-project/messages':
+        require __DIR__ . $VIEWSDIR . 'profile\messages\messages.php';
+        break;
+    case '/blood-bank-project/message?messenger_id='.$messenger_id:
+        require __DIR__ . $VIEWSDIR . 'profile\messages\inboxSider.php';
         break;
     default:
             http_response_code(404);
