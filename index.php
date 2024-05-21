@@ -45,6 +45,9 @@ switch( $request ) {
     case '/blood-bank-project/admin':
         require __DIR__ . $VIEWSDIR . 'admin\adminrouter.php';
         break;
+    case '/blood-bank-project/alldonors':
+        require __DIR__ . $VIEWSDIR . 'admin\alldonors\alldonors.php';
+        break;
     default:
             http_response_code(404);
             require __DIR__  . '/error.php';

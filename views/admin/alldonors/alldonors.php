@@ -23,7 +23,7 @@ require_once("views/admin/alldonors/donorstable.php");
     <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label> 
     <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       <!-- Sidebar content here -->
-      <li><a class="active" href="admin"> <i class="fa-solid fa-user"></i>Dashboard</a></li><br>
+      <li><a href="admin"> <i class="fa-solid fa-user"></i>Dashboard</a></li><br>
       <li><a class="active"><i class="fa-solid fa-droplet"></i>All Donors</a></li><br>
       <li><a><i class="fa-solid fa-message"></i>Message Requests</a></li><br>
       <li><a><i class="fa-solid fa-circle-info"></i>Update Information</a></li>
@@ -31,6 +31,6 @@ require_once("views/admin/alldonors/donorstable.php");
   
   </div>
 </div>
-<script src="views\profile\dashboard\profile.js"></script>
+<script src="views\admin\alldonors\admin.js"></script>
 </body>
 </html>

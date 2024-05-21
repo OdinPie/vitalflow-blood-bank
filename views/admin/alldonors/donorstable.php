@@ -1,3 +1,6 @@
+<?php 
+require_once("views/authentication/config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 class="text-center">Registered Donors</h1>
+    <h1 class="text-center text-2xl py-3">Registered Donors</h1>
     <div>
     <div class="overflow-x-auto">
   <table class="table">
@@ -18,7 +21,6 @@
         <th>Email</th>
         <th>Bgroup</th>
         <th>Address</th>
-        <th>District</th>
         <th>NID</th>
         <th>Gender</th>
         <th>Donation Date</th>
@@ -27,30 +29,42 @@
         <th>Status</th>
       </tr>
     </thead>
+    <?php 
+        $result = mysqli_query($conn,"SELECT * FROM users WHERE NOT username='ADMIN'");
+        while($row= mysqli_fetch_assoc($result)) {?>
       <tr>
         <td>
           <div class="flex items-center gap-3">
             <div class="avatar">
               <div class="mask mask-squircle w-12 h-12">
-                <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                <img src="<?php echo $row['url'];?>" alt="donor-photo" />
               </div>
             </div>
             <div>
-              <div class="font-bold">Hart Hagerty</div>
-              <div class="text-sm opacity-50">United States</div>
+              <div class="font-bold"><?php echo $row['username'];?></div>
+              <div class="text-sm opacity-50"><?php echo $row['district'];?></div>
             </div>
           </div>
         </td>
-        <td>
-          Zemlak, Daniel and Leannon
-          <br/>
-          <span class="badge badge-ghost badge-sm">Desktop Support Technician</span>
-        </td>
-        <td>Purple</td>
+        <td><?php echo $row['number'];?></td>
+        <td><?php echo $row['email'];?></td>
+        <td><?php echo $row['bgroup'];?></td>
+        <td><?php echo $row['address'];?></td>
+        <td><?php echo $row['nid'];?></td>
+        <td><?php echo $row['gender'];?></td>
+        <td><?php echo $row['ddate'];?></td>
+        <td><?php echo $row['validator_name'];?></td>
+        <td><?php echo $row['validator_designation'];?></td>
         <th>
-          <button class="btn btn-ghost btn-xs">details</button>
+        <?php 
+        if($row['status']) {?>
+            <p>verified</p>
+            <?php }else{?>
+          <button onclick="verifyUser('<?php echo $row['email'];?>')" class="btn btn-xs">Validate</button>
+          <?php }?>
         </th>
       </tr>
+      <?php } ?>
     </tbody>
   </table>
 </div>
