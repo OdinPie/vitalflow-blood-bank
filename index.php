@@ -25,7 +25,7 @@ switch( $request ) {
     break;
 
     case '/blood-bank-project/blood-request':
-        require __DIR__ . $VIEWSDIR . 'profile\bloodRequest\bloodRequestForm.php';
+        require __DIR__ . $VIEWSDIR . 'profile\bloodRequest\bloodRequest.php';
         break;
     case '/blood-bank-project/profile?id='.$id:
         require __DIR__ . $VIEWSDIR . 'profile\dashboard\dashboard.php';
@@ -41,6 +41,9 @@ switch( $request ) {
         break;
     case '/blood-bank-project/blood-request-posts':
         require __DIR__ . $VIEWSDIR . 'postBlood\postBlood.php';
+        break;
+    case '/blood-bank-project/admin':
+        require __DIR__ . $VIEWSDIR . 'admin\adminrouter.php';
         break;
     default:
             http_response_code(404);

@@ -1,20 +1,34 @@
-<!DOCTYPE html>
-<html data-theme="light" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Blood Request Form</title>
-</head>
+<?php 
+    if (isset($_POST["submit"])) {
+        $bgroup = $_POST["bgroup"];
+        $rdate = $_POST["rdate"];
+        $division = $_POST["division"];
+        $district = $_POST["district"];
+        $no_of_bags = $_POST["no_of_bags"];
+        $hospital = $_POST["hospital"];
+        $message = $_POST["message"];
+        $user_id = $_SESSION["id"];
+
+        $conn = mysqli_connect('localhost:3307', 'root', '', 'bloodbank');
+        if ($conn->connect_error) {
+            die ("conncetion error!!".$conn->connect_error);
+        }else{
+        // echo $conn;
+        $statement = $conn->prepare('INSERT INTO requests (bgroup, rdate, division, district, no_of_bags, hospital, details, user_id) VALUES (?,?,?,?,?,?,?,?)');
+        // echo $statement;
+        $statement->bind_param("ssssissi",$bgroup,$rdate,$division,$district,$no_of_bags,$hospital,$message,$user_id);
+        $statement->execute();
+        $statement->close();
+        }
+    }
+?>
 <body>
-<?php require_once("shared/nav.php"); ?>
-    <div class="container flex justify-center items-center">
-        <div class="form-container rounded-xl bg-slate-200 p-10">
-            <form action="">
+    <div class="container flex justify-center items-center bg-slate-200 h-[100%]">
+        <div class="form-container rounded-xl bg-slate-200 text-slate-400 p-10">
+            <form method="POST">
                 <h1 class="text-2xl font-bold text-black">Request for Blood</h1><br>
                 <div class="flex gap-10 my-2">
-                <select class="select select-bordered w-[300px] bg-white">
+                <select name="bgroup" class="select select-bordered w-[300px] bg-white">
                 <option disabled selected>Blood Group</option>
                 <option value="AB-">AB-</option>
                 <option value="B-">B-</option>
@@ -24,7 +38,7 @@
                 <option value="A-">A-</option>
                 <option value="O+">O+</option>
                 </select> 
-                <input class="w-[300px] p-3 rounded-lg bg-white" placeholder="Requirement Date" type="text" onfocus="this.type='date'" onblur="this.type='text' " name="requiredDate" id="">               
+                <input class="w-[300px] p-3 rounded-full bg-white" placeholder="Requirement Date" type="text" onfocus="this.type='date'" onblur="this.type='text' " name="rdate" id="">               
                 </div>
                 <div class="flex gap-10 my-2">
                 <select class="select select-bordered w-[300px] bg-white" name="division">
@@ -107,12 +121,12 @@
                 </div>
             <div class="flex gap-10 my-2">
             <input type="number" placeholder="Number of Bags" name="no_of_bags" class="input input-bordered bg-white w-[300px]" />
-            <input type="text" placeholder="Name of Hospital" name="name_of_hospital" class="input input-bordered bg-white w-[300px]" />
+            <input type="text" placeholder="Name of Hospital" name="hospital" class="input input-bordered bg-white w-[300px]" />
 
             </div>
             <textarea name="message" class="w-full rounded-xl bg-white p-3 my-2" placeholder="Write additional details here..." id=""></textarea>
             <br>
-            <button class="btn btn-error w-full">Request Blood</button>
+            <button name="submit" class="btn btn-error w-full">Request Blood</button>
             </form>
         </div>
     </div>

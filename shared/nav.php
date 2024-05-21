@@ -1,5 +1,6 @@
 <?php 
     require_once("views/authentication/config.php");
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +26,11 @@
                 <ul class="p-2">
                   <li href="blood-request-posts"><a>Donate Blood</a></li>
                   <li><a href="donors">Search Blood</a></li>
-                  <li><a href="blood-request">Post Blood Request</a></li>
+                  <?php if(!empty($_SESSION['id'])){ ?>
+                  <li><a href="blood-request-posts">Post Blood Request</a></li>
+                  <?php } else { ?>
+                  <li><a href="login">Post Blood Request</a></li>
+                  <?php } ?>
                 </ul>
               </details>
             </li>
