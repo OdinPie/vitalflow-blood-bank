@@ -37,7 +37,7 @@ h1,p{
 }
 .sender{
   display: flex;
-  padding: 5px;
+  padding: 10px;
   border-radius: 18px 18px 0px 18px;
   background-color: palevioletred;
   align-items: flex-end;
@@ -47,9 +47,13 @@ h1,p{
 
 .receiver{
   display: flex;
-  padding: 5px;
+  padding: 10px;
   border-radius: 18px 18px 18px 0px;
   background-color: pink;
   max-width:calc(100% - 600px);
+}
+
+.chatArea{
+  height: 100vh;
 }
 
