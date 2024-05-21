@@ -14,6 +14,19 @@
     <title>Profile</title>
 </head>
 <body>
+    <div class="relative">
+        <div hidden class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-3/4 bg-pink-100 rounded-lg p-10">
+                <div class="flex justify-end">
+                <button onclick="hideModal()"><i class="fa-solid fa-circle-xmark"></i></button>
+                </div>
+            <form action="">
+                <h1 class="text-center">Send Message</h1><br>
+                <textarea class="w-[300px] rounded-lg" name="message" placeholder="within 1000 characters" id="message"></textarea><br>
+                <div class="flex mt-1 justify-center">
+                <button class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
     <div class="h-16 bg-slate-100"></div>
     <div class="flex items-center gap-10 mb-10 pb-10 bg-slate-100">
     <div class="avatar pl-10 -mt-10">
@@ -24,7 +37,10 @@
     <div>
         <div class="flex items-center gap-3 mb-4">
         <h1 class="text-2xl"><?php echo $row["username"]?></h1>
-        <?php 
+        <?php if($row['status']){?>
+        <i class="fa-solid fa-circle-check"></i>
+        <?php } 
+        
         $today = date("Y-m-d");
         $ddate = $row["ddate"];
         $diff = date_diff(date_create($today), date_create($ddate))->format("%a") ;
@@ -33,11 +49,8 @@
         <?php } else { ?>
         <div class="badge badge-neutral">Eligible</div>
    <?php } 
-    if($row['status']){?>
-        <i class="fa-solid fa-circle-check"></i>
-        <?php } 
         if($id != $current_user_id){ ?>
-        <button class="btn rounded-none">Send Message</button>
+        <button onclick="showModal()" class="btn btn-sm">Send Message</button>
         <?php } ?>
         
         </div>
@@ -106,12 +119,24 @@
         <div class="label">
             <span class="label-text">Address</span>
         </div>
-            <h1 class="text-lg border p-2 w-52"><?php echo $row["address"]?>s</h1>
+            <h1 class="text-lg border p-2 w-52"><?php echo $row["address"]?></h1>
         </label>
         </div>
         </div>
         </div>
 
     </div>
+    </div>
+    <!-- <script src="views/profile/dashboard/profile.js"></script> -->
+    <script>
+        function showModal(){
+            document.querySelector(".absolute").removeAttribute('hidden');
+        }
+
+        function hideModal(){
+            document.querySelector(".absolute").setAttribute('hidden',true);
+            document.getElementById("message").value = '';
+        }
+    </script>
 </body>
 </html>
