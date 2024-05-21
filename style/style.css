@@ -22,3 +22,15 @@ h1,p{
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
   }
+
+.sender{
+  padding: 5px;
+  border-radius: 5px 5px 0px 5px;
+  background-color: palevioletred;
+}
+
+.receiver{
+  padding: 5px;
+  border-radius: 5px 5px 5px 0px;
+  background-color: pink;
+}

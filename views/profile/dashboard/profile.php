@@ -4,6 +4,18 @@
     $conn = mysqli_connect("localhost:3307", "root", "", "bloodbank");
     $result = mysqli_query($conn,"SELECT * FROM users where user_id='$id'");
     $row = mysqli_fetch_assoc($result);
+
+    if (isset($_POST["send"])){
+        $message = $_POST["message"];
+        $receiver_id = $id;
+        $sender_id = $current_user_id;
+        $sent_time = date("Y-m-d H:i:s");
+        
+        $statement = $conn->prepare("INSERT INTO messages (receiver_id,sender_id, sent_time, message) VALUES (?,?,?,?)");
+        $statement->bind_param("iiss", $receiver_id,$sender_id,$sent_time,$message);
+        $statement->execute();
+        $statement->close();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +31,11 @@
                 <div class="flex justify-end">
                 <button onclick="hideModal()"><i class="fa-solid fa-circle-xmark"></i></button>
                 </div>
-            <form action="">
+            <form method="POST">
                 <h1 class="text-center">Send Message</h1><br>
                 <textarea class="w-[300px] rounded-lg" name="message" placeholder="within 1000 characters" id="message"></textarea><br>
                 <div class="flex mt-1 justify-center">
-                <button class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+                <button name="send" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </form>
         </div>
