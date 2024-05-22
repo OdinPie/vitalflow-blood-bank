@@ -29,19 +29,18 @@ $message = mysqli_fetch_assoc($message_result);
         </div>
         <hr>
         <div class="chatArea flex flex-col relative">
-        <div class="chat-box">
-            <div class="receiver">
-                <p>Hello dude how are you?</p>
-            </div><br>
-            <div class="sender">
-                <p>Hello gib blud</p>
-            </div>
+        <div class="chat-box h-[500px] overflow-auto">
+            
         
           
         </div>
-        <div class="flex fixed bottom-0 w-full">
-        <input type="text" id="message" class="input rounded-none w-7/12 outline-none" placeholder="Type your text here ...">
-        <button onclick="insertChat()" class="btn rounded-none w-2/12">Send</button>
+        <div class="fixed bottom-0 w-full">
+        <form action="#" class="text-form">
+        <input type="text" name="receiver_id" value="<?php echo $messenger_id; ?>" hidden>
+        <input type="text" name="sender_id" value="<?php echo $sender_id; ?>" hidden>
+        <input type="text" name="message" class="input rounded-none w-7/12 outline-none" placeholder="Type your text here ..." autocomplete="off">
+        <button onclick="insertChat(event)" class="btn rounded-none w-2/12">Send</button>
+        </form>
         </div>
         </div>
         </div>

@@ -41,6 +41,5 @@ $id = isset($_GET["id"]) ? $_GET["id"] : -1;
   </div>
   <?php } ?>
 </div>
-<script src="views\profile\dashboard\profile.js"></script>
 </body>
 </html>

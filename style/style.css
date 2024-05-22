@@ -34,6 +34,13 @@ h1,p{
   }
 .chat-box{
   padding: 20px;
+  position: relative;
+}
+.chat-box:last-child{
+  margin-bottom: 10px;
+}
+.chat-box::-webkit-scrollbar{
+  width: 0px;
 }
 .sender{
   display: flex;
@@ -52,8 +59,3 @@ h1,p{
   background-color: pink;
   max-width:calc(100% - 600px);
 }
-
-.chatArea{
-  height: 100vh;
-}
-

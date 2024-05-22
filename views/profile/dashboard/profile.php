@@ -139,7 +139,6 @@
 
     </div>
     </div>
-    <!-- <script src="views/profile/dashboard/profile.js"></script> -->
     <script>
         function showModal(){
             document.querySelector(".absolute").removeAttribute('hidden');
