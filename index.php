@@ -42,7 +42,10 @@ switch( $request ) {
     case '/blood-bank-project/donors':
         require __DIR__ . $VIEWSDIR . 'donors\donors.php';
         break;
-    case '/blood-bank-project/donors?bgroup='.$bgroup.'&district='.$district.'&date='.$date:
+    case '/blood-bank-project/donors?bgroup='.$bgroup.'&district='.$district.'&date='.$date;
+        require __DIR__ . $VIEWSDIR . 'donors\donors.php';
+        break;
+    case '/blood-bank-project/donors?bgroup='.$bgroup.'&district='.$district;
         require __DIR__ . $VIEWSDIR . 'donors\donors.php';
         break;
     case '/blood-bank-project/blood-request-posts':

@@ -38,21 +38,22 @@ if($bgroup == 'ABp'){
             <div class="card-body">
             <h2 class="card-title text-center">Advanced Search</h2>
             <hr>
-            <form action="">
+            <form action="donors">
             <div class="p-1">
             <label class="form-control w-full max-w-xs">
             <div class="label">
                 <span class="label-text">Blood Group</span>
             </div>
-            <select class="select select-bordered w-full max-w-xs">
+            <select class="select select-bordered w-full max-w-xs" name="bgroup">
+                <option value="Select Blood Group" selected disabled>Blood Group</option>
                 <option value="AB-">AB-</option>
                 <option value="B-">B-</option>
-                <option value="AB+">AB+</option>
-                <option value="A+">A+</option>
+                <option value="ABp">AB+</option>
+                <option value="Ap">A+</option>
                 <option value="O-">O-</option>
                 <option value="B-">B-</option>
                 <option value="A-">A-</option>
-                <option value="O+">O+</option>
+                <option value="Op">O+</option>
             </select>
             </label>
             </div>

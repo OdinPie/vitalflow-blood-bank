@@ -15,7 +15,7 @@
 <body class="h-10">
     <div class="navbar bg-[#fae7f4]">
         <div class="navbar-start">
-          <a class="btn btn-ghost text-xl">VitalFlow</a>
+          <a href="home" class="btn btn-ghost text-xl">VitalFlow</a>
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal z-50 px-1">
@@ -24,7 +24,7 @@
               <details>
                 <summary>Donation</summary>
                 <ul class="p-2">
-                  <li href="blood-request-posts"><a>Donate Blood</a></li>
+                  <li><a href="blood-request-posts">Donate Blood</a></li>
                   <li><a href="donors">Search Blood</a></li>
                   <?php if(!empty($_SESSION['id'])){ ?>
                   <li><a href="blood-request-posts">Post Blood Request</a></li>
