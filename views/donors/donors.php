@@ -1,5 +1,15 @@
 <?php 
 require_once("views/authentication/config.php");
+$id = isset($_GET['id']) ? $_GET['id'] :'';
+$bgroup = isset($_GET['bgroup']) ? $_GET['bgroup'] :'';
+$district = isset($_GET['district']) ? $_GET['district'] :'';
+if($bgroup == 'ABp'){
+    $bgroup = 'AB+';
+}else if($bgroup == 'Ap'){
+    $bgroup = 'A+';
+}else if($bgroup == 'Op'){
+    $bgroup = 'O+';
+}
 ?>
 <!DOCTYPE html>
 <html data-theme="light" lang="en">
@@ -11,17 +21,16 @@ require_once("views/authentication/config.php");
     <title>Find Donors</title>
 </head>
 <body>
-    <?php require_once('shared/nav.php') ?>
+    <?php require_once('shared/nav.php') ;
+    if(!$bgroup){
+        $result = mysqli_query($conn,"SELECT * FROM users WHERE NOT username='ADMIN'");
+    }else{
+        $result = mysqli_query($conn,"SELECT * FROM users WHERE NOT username='ADMIN'AND bgroup='$bgroup' AND district='$district'");
+    }
+    ?>
     <div class="px-10">
     <div class="flex justify-between items-center p-5">
-        <p class="font-semibold">Results(03)</p>
-        <div class="flex gap-2">
-        <p class="text-sm">SORT BY</p>
-        <select class="border" name="sort" id="">
-            <option value="Newest">Newest</option>
-            <option value="Oldest">Oldest</option>
-        </select>
-        </div>
+        <p class="font-semibold">Results(<?php echo mysqli_num_rows($result) ;?>)</p>
     </div>
     <hr>
     <div class="flex gap-10 my-10">
@@ -29,6 +38,7 @@ require_once("views/authentication/config.php");
             <div class="card-body">
             <h2 class="card-title text-center">Advanced Search</h2>
             <hr>
+            <form action="">
             <div class="p-1">
             <label class="form-control w-full max-w-xs">
             <div class="label">
@@ -120,16 +130,16 @@ require_once("views/authentication/config.php");
             </select>
             </label>
             </div>
-            <div class="card-actions justify-end">
+            <div class="card-actions justify-end my-1">
             <button class="btn w-full rounded-none bg-pink-300">Search</button>
             </div>
+            </form>
+            
         </div>
         </div>
         <div class="grid grid-cols-3 gap-5">
         <?php 
-        $result = mysqli_query($conn,"SELECT * FROM users WHERE NOT username='ADMIN'");
         while($row= mysqli_fetch_assoc($result)) {?>
-            
             <div class="card card-compact w-60 bg-base-100 shadow-xl">
             <div class="avatar flex justify-center">
                 <div class="w-24 rounded-full">

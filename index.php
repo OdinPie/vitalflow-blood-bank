@@ -3,6 +3,9 @@
 $request = $_SERVER['REQUEST_URI'];
 $VIEWSDIR = '/views/';
 $id = isset($_GET['id']) ? $_GET['id'] :'';
+$bgroup = isset($_GET['bgroup']) ? $_GET['bgroup'] :'';
+$district = isset($_GET['district']) ? $_GET['district'] :'';
+$date = isset($_GET['date']) ? $_GET['date'] :'';
 $content_id = isset($_GET['content_id']) ? $_GET['content_id'] :'';
 $messenger_id= isset($_GET['messenger_id']) ? $_GET['messenger_id'] :'';
 switch( $request ) {
@@ -37,6 +40,9 @@ switch( $request ) {
         require __DIR__ . $VIEWSDIR . 'educational\content.php';
         break;
     case '/blood-bank-project/donors':
+        require __DIR__ . $VIEWSDIR . 'donors\donors.php';
+        break;
+    case '/blood-bank-project/donors?bgroup='.$bgroup.'&district='.$district.'&date='.$date:
         require __DIR__ . $VIEWSDIR . 'donors\donors.php';
         break;
     case '/blood-bank-project/blood-request-posts':

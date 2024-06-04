@@ -23,19 +23,19 @@
     <div class="content text-center absolute top-1/4 -translate-y-10 left-1/2 -translate-x-1/2">
         <h1 class="text-4xl font-bold text-white">VitalFlow</h1><br>
         <p class='text-white'>Connecting donors with rare blood groups to those in need, ensuring life-saving transfusions with ease.</p>
-        <form action="">
+        <form action="donors">
             <div class="group-select flex bg-[#fae7f4] rounded-3xl my-5">
-            <select class="select max-w-xs" name="group" id="">
+            <select class="select max-w-xs" name="bgroup" id="" required>
                 <option disabled selected value="">Blood Group</option>
-                <option value="">AB-</option>
-                <option value="">B-</option>
-                <option value="">AB+</option>
-                <option value="">A+</option>
-                <option value="">O-</option>
-                <option value="">A-</option>
-                <option value="">O+</option>
+                <option value='AB-'>AB-</option>
+                <option value="B-">B-</option>
+                <option value="ABp">AB+</option>
+                <option value="Ap">A+</option>
+                <option value="O-">O-</option>
+                <option value="A-">A-</option>
+                <option value="Op">O+</option>
             </select>
-            <select class="select max-w-xs" name="district" id="">
+            <select class="select max-w-xs" name="district" id="" required>
                 <option disabled selected value="">Select District</option>
                 <option value="Barishal">Barishal</option>
                 <option value="Barguna">Barguna</option>
@@ -102,7 +102,7 @@
                 <option value="Sunamganj">Sunamganj</option>
                 <option value="Sylhet">Sylhet</option>
             </select>
-            <input class="bg-[#fae7f4]" placeholder="&nbsp Enter Date" type="date" id="date">
+            <input class="bg-[#fae7f4]" placeholder="&nbsp Enter Date" type="date" id="date" name="date" required>
             <button class="btn bg-[#fae7f4] flex-1 rounded-full">Search</button>
             </div>
         </form><br>
