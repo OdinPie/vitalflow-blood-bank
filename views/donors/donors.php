@@ -3,6 +3,7 @@ require_once("views/authentication/config.php");
 $id = isset($_GET['id']) ? $_GET['id'] :'';
 $bgroup = isset($_GET['bgroup']) ? $_GET['bgroup'] :'';
 $district = isset($_GET['district']) ? $_GET['district'] :'';
+$date = isset($_GET['date']) ? $_GET['date'] :'';
 if($bgroup == 'ABp'){
     $bgroup = 'AB+';
 }else if($bgroup == 'Ap'){
@@ -18,6 +19,7 @@ if($bgroup == 'ABp'){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <title>Find Donors</title>
 </head>
 <body>
@@ -25,25 +27,26 @@ if($bgroup == 'ABp'){
     if(!$bgroup){
         $result = mysqli_query($conn,"SELECT * FROM users WHERE NOT username='ADMIN'");
     }else{
-        $result = mysqli_query($conn,"SELECT * FROM users WHERE NOT username='ADMIN'AND bgroup='$bgroup' AND district='$district'");
+        $result = mysqli_query($conn,"SELECT * FROM users WHERE NOT username='ADMIN'AND bgroup='$bgroup' AND district='$district' AND DATEDIFF('$date', ddate) > 56");
     }
     ?>
     <div class="px-10">
     <div class="flex justify-between items-center p-5">
         <p class="font-semibold">Results(<?php echo mysqli_num_rows($result) ;?>)</p>
+        <a href="donors" class="btn">All Donors</a>
     </div>
     <hr>
     <div class="flex gap-10 my-10">
-            <div class="card card-compact w-72 bg-transparent shadow-xl">
+            <div class="card card-compact w-72 h-80 bg-transparent shadow-xl">
             <div class="card-body">
             <h2 class="card-title text-center">Advanced Search</h2>
             <hr>
             <form action="donors">
             <div class="p-1">
             <label class="form-control w-full max-w-xs">
-            <div class="label">
+            <!-- <div class="label">
                 <span class="label-text">Blood Group</span>
-            </div>
+            </div> -->
             <select class="select select-bordered w-full max-w-xs" name="bgroup">
                 <option value="Select Blood Group" selected disabled>Blood Group</option>
                 <option value="AB-">AB-</option>
@@ -59,9 +62,9 @@ if($bgroup == 'ABp'){
             </div>
             <div class="p-1">
             <label class="form-control w-full max-w-xs">
-            <div class="label">
+            <!-- <div class="label">
                 <span class="label-text">District</span>
-            </div>
+            </div> -->
             <select class="select select-bordered max-w-xs" name="district" id="">
                 <option disabled selected value="">Select District</option>
                 <option value="Barishal">Barishal</option>
@@ -131,6 +134,15 @@ if($bgroup == 'ABp'){
             </select>
             </label>
             </div>
+            <div class="p-1">
+            <label class="form-control w-full max-w-xs">
+            <!-- <div class="label">
+                <span class="label-text">Requirement Date</span>
+            </div> -->
+            <input class="input input-bordered" placeholder="&nbsp Enter Date" type="date" id="date" name="date" required>
+            </select>
+            </label>
+            </div>
             <div class="card-actions justify-end my-1">
             <button class="btn w-full rounded-none bg-pink-300">Search</button>
             </div>
@@ -140,6 +152,7 @@ if($bgroup == 'ABp'){
         </div>
         <div class="grid grid-cols-3 gap-5">
         <?php 
+        
         while($row= mysqli_fetch_assoc($result)) {?>
             <div class="card card-compact w-60 bg-base-100 shadow-xl">
             <div class="avatar flex justify-center">
@@ -154,17 +167,25 @@ if($bgroup == 'ABp'){
                 <p>District: <?php echo $row["district"] ?></p>
                 </div>
                 <p>Number: 01********</p>
+                
                 <div class="card-actions flex justify-end">
                 <a href="profile?id=<?php echo $row["user_id"];?>"><button class="btn btn-outline-red rounded-none flex-1">See Details</button></a>
                 </div>
             </div>
             </div>
-
         <?php }?>
     </div>
+    <?php if(mysqli_num_rows($result) === 0){ ?>
+        <div class="flex flex-1 justify-center items-center">
+            <div>
+            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+            <dotlottie-player src="https://lottie.host/3c207588-e316-4a5f-9ad5-9788e479c5d6/nDzJ1JKpVj.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+            </div>
+        </div>
+        <?php }?>
     </div>
     
-    </div>
-    
+    </div> 
+
 </body>
 </html>
