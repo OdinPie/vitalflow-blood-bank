@@ -32,7 +32,7 @@ $current_user_id = isset($_SESSION["id"]) ? $_SESSION["id"] : 0;
       <li><a href="profile?id=<?php echo $current_user_id;?>" id="1" > <i class="fa-solid fa-user"></i>Dashboard</a></li><br>
       <li><a href="blood-request" class="active" id="2"><i class="fa-solid fa-droplet"></i>Request Blood</a></li><br>
       <li><a href="messages"><i class="fa-solid fa-message"></i>Messages</a></li><br>
-      <li><a id="4"><i class="fa-solid fa-circle-info"></i>Update Information</a></li>
+      <!-- <li><a id="4"><i class="fa-solid fa-circle-info"></i>Update Information</a></li> -->
     </ul>
   
   </div>

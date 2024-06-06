@@ -38,7 +38,7 @@ $id = isset($_GET["id"]) ? $_GET["id"] : -1;
       <li><a class="active" id="1"> <i class="fa-solid fa-user"></i>Dashboard</a></li><br>
       <li><a href="blood-request" id="2"><i class="fa-solid fa-droplet"></i>Request Blood</a></li><br>
       <li><a href="messages"><i class="fa-solid fa-message"></i>Messages</a></li><br>
-      <li><a id="4"><i class="fa-solid fa-circle-info"></i>Update Information</a></li>
+      <!-- <li><a id="4"><i class="fa-solid fa-circle-info"></i>Update Information</a></li> -->
     </ul>
   
   </div>
